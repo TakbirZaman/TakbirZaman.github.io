@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Takbir Zaman Bhuiyan — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c0e;
+    --surface: #111316;
+    --card: #161a1f;
+    --border: #222730;
+    --accent: #c8a96e;
+    --accent2: #5b8fa8;
+    --text: #e8e4dc;
+    --muted: #6b717d;
+    --bright: #f5f0e8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Noise texture overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.5;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(11,12,14,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 0%, transparent 70%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,169,110,0.07) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; max-width: 800px; }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--bright);
+    margin-bottom: 0.3rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: #0b0c0e;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+
+  .btn-primary:hover {
+    background: var(--bright);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .hero-awards {
+    position: absolute;
+    right: 4rem;
+    bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .award-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 0.6rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .award-badge svg { flex-shrink: 0; }
+
+  /* ── Section wrapper ── */
+  section { padding: 6rem 4rem; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: attr(data-num);
+    font-size: 0.6rem;
+    color: var(--border);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--bright);
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── About ── */
+  #about { background: var(--surface); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.9;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 400; }
+
+  .info-table { margin-top: 2rem; }
+  .info-row {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 0;
+    align-items: baseline;
+  }
+
+  .info-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 130px;
+    flex-shrink: 0;
+  }
+
+  .info-val {
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+
+  .info-val a { color: var(--accent); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+
+  /* ── Skills ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,169,110,0.04) 0%, transparent 60%);
+  }
+
+  .skill-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .skill-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--bright);
+    margin-bottom: 0.8rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.65rem;
+    background: var(--border);
+    color: var(--muted);
+    border-radius: 0;
+  }
+
+  /* ── Projects ── */
+  #projects { background: var(--surface); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.35s ease;
+  }
+
+  .project-card:hover { border-color: rgba(200,169,110,0.35); transform: translateY(-4px); }
+  .project-card:hover::after { width: 100%; }
+
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--border);
+    letter-spacing: 0.1em;
+  }
+
+  .project-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--bright);
+    line-height: 1.2;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover { gap: 0.8rem; }
+
+  /* ── Research ── */
+  .research-list { display: flex; flex-direction: column; gap: 2rem; }
+
+  .research-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2.2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    transition: border-color 0.25s;
+  }
+
+  .research-item:hover { border-color: rgba(91,143,168,0.5); }
+
+  .research-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 0.2rem;
+  }
+
+  .research-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--bright);
+    margin-bottom: 0.6rem;
+  }
+  /* ── Education Section ── */
+#education {
+  position: relative;
+  padding: 100px 2rem;
+  overflow: hidden;
+}
+
+.edu-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.edu-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-tag {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #818cf8;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #f1f5f9;
+}
+
+.section-title em {
+  font-style: italic;
+  color: #818cf8;
+}
+
+/* Timeline */
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #6366f1, transparent);
+}
+
+.edu-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 8px 32px rgba(99,102,241,0.15);
+}
+
+.edu-icon {
+  font-size: 2rem;
+  min-width: 48px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.edu-info {
+  flex: 1;
+}
+
+.edu-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: rgba(99,102,241,0.2);
+  color: #818cf8;
+  border: 1px solid rgba(99,102,241,0.3);
+  margin-bottom: 0.6rem;
+}
+
+.edu-badge.completed {
+  background: rgba(34,197,94,0.1);
+  color: #4ade80;
+  border-color: rgba(34,197,94,0.3);
+}
+
+.edu-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 0.3rem;
+}
+
+.edu-institution {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+
+.edu-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.edu-year,
+.edu-gpa {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.edu-gpa {
+  color: #fbbf24;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .section-title { font-size: 1.8rem; }
+  .edu-card { flex-direction: column; gap: 1rem; }
+  .edu-timeline::before { display: none; }
+}
+
+  .research-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+
+  .research-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .tag-blue {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.65rem;
+    background: rgba(91,143,168,0.12);
+    color: var(--accent2);
+    border: 1px solid rgba(91,143,168,0.25);
+  }
+
+  /* ── Contact ── */
+  #contact { background: var(--surface); }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-text p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .social-links { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.25s;
+    background: var(--card);
+  }
+
+  .social-link:hover {
+    border-color: var(--accent);
+    padding-left: 1.8rem;
+  }
+  #hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-photo img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;          /* circle — remove for square */
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
+}
+
+  .social-link span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.25s;
+  }
+
+  .social-link:hover span { color: var(--accent); }
+
+  .social-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--border);
+    width: 70px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--border);
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-awards { display: none; }
+    .research-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .research-num { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">TZB</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Software Engineer & AI Enthusiast</div>
+    <h1>Takbir Zaman<br><em>Bhuiyan</em></h1>
+    <div class="hero-sub">Building data-driven software and exploring machine learning</div>
+    <p class="hero-desc">
+      BSc in Computer Science & Engineering student at AIUB, Dhaka. Passionate about building data-driven software, 
+      exploring machine learning, and engineering robust systems that solve real-world problems.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+   <div class="hero-photo">
+    <img src="takbir.jpg" alt="Takbir Zaman Bhuiyan" />
+  </div>
+
+  <div class="hero-awards">
+    <div class="award-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      Dean's Award — Fall 2023–24
+    </div>
+    <div class="award-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      Dean's Award — Fall 2024–25
+    </div>
+    <div class="award-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5">
+        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+      </svg>
+      CGPA 3.75 / 4.0
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label" data-num="01">About</div>
+  <h2>A little about me</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+  I'm a <strong>BSc Computer Science & Engineering student at American International University-Bangladesh (AIUB)</strong>, Dhaka, currently serving as a 
+  <strong>Software Engineer Intern at NN Services & Engineering Ltd (NNSEL)</strong>. Alongside maintaining strong academic performance, I focus on applying my knowledge in real-world software development.
+</p>
+
+<p>
+  My work centers around <strong>full-stack web development</strong>, building scalable and production-ready applications using 
+  <strong>React.js, Node.js, Tailwind CSS, and .NET Core</strong>. I have hands-on experience with 
+  <strong>RESTful API development, database design, and backend architecture</strong>, ensuring clean, maintainable, and performance-driven systems.
+</p>
+
+<p>
+  I am passionate about <strong>machine learning and data-driven engineering</strong>, constantly expanding my skills to build intelligent, impactful solutions. 
+  My goal is to engineer robust systems that solve real-world problems with efficiency, scalability, and clean design.
+</p>
+    </div>
+    <div class="info-table reveal">
+      <div class="info-row">
+        <span class="info-key">Education</span>
+        <span class="info-val">BSc Software Engineering, AIUB (2022–Present)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">CGPA</span>
+        <span class="info-val">3.75 / 4.0</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Location</span>
+        <span class="info-val">Dhaka, Bangladesh</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Email</span>
+        <span class="info-val"><a href="mailto:takbirzamanbhuiyan@gmail.com">takbirzamanbhuiyan@gmail.com</a></span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Phone</span>
+        <span class="info-val">01631-107100</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">GitHub</span>
+        <span class="info-val"><a href="https://github.com/TakbirZaman" target="_blank">github.com/TakbirZaman</a></span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">LinkedIn</span>
+        <span class="info-val"><a href="https://www.linkedin.com/in/takbir-zaman-bhuiyan" target="_blank">in/takbir-zaman-bhuiyan</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="section-label" data-num="02">Skills</div>
+  <h2>Technical expertise</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">// Languages</div>
+      <h3>Programming</h3>
+      <div class="skill-tags">
+        <span class="tag">C++</span>
+        <span class="tag">Python</span>
+        <span class="tag">C#</span>
+        <span class="tag">Java</span>
+        <span class="tag">R</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">// Frontend</div>
+      <h3>Web Development</h3>
+      <div class="skill-tags">
+        <span class="tag">React.js</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+       
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">// Backend</div>
+      <h3>Frameworks</h3>
+      <div class="skill-tags">
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">>.NET Core MVC</span>
+        <span class="tag">RESTful API</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">// Data</div>
+      <h3>Databases</h3>
+      <div class="skill-tags">
+        <span class="tag">MySQL</span>
+        <span class="tag">Oracle</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">// Intelligence</div>
+      <h3>ML & Data Science</h3>
+      <div class="skill-tags">
+        <span class="tag">Image Processing</span>
+        <span class="tag">Data Preprocessing</span>
+        <span class="tag">Predictive Modeling</span>
+        
+    
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">// Concepts</div>
+      <h3>Architecture</h3>
+      <div class="skill-tags">
+        <span class="tag">3-Layer Architecture</span>
+        <span class="tag">RBAC</span>
+        <span class="tag">CRUD</span>
+        <span class="tag">Database Design</span>
+        <span class="tag">OpenGL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-label" data-num="03">Projects</div>
+  <h2>Selected work</h2>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-num">001</div>
+      <h3>Student Attendance Management API</h3>
+      <p>RESTful attendance system built with ASP.NET Core Web API and EF Core using clean 3-layer architecture. Features secure CRUD operations, attendance marking, and student-class mapping with reliable database persistence.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">SQL</span></div>
+        <a href="https://github.com/TakbirZaman/Student_Attendance_Management" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">002</div>
+      <h3>ConnectHub — Social Platform</h3>
+      <p>MVC-driven social media platform featuring role-based access control (RBAC), user interactions, post management, and a marketplace module. MySQL-backed with structured authentication and authorization flows.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">PHP</span><span class="tag">HTML/CSS</span><span class="tag">MySQL</span><span class="tag">MVC</span></div>
+        <a href="https://github.com/TakbirZaman/ConnectHub" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">003</div>
+      <h3>Loan Approval Data Preprocessing</h3>
+      <p>Automated preprocessing pipeline in R for loan approval datasets, handling missing values, applying IQR-based outlier removal, and improving class balance to produce clean, model-ready features.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">R</span><span class="tag">IQR</span><span class="tag">Data Cleaning</span></div>
+        <a href="https://github.com/TakbirZaman/Loan-Approval-Analysis-Data-Cleaning-in-R-language" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">004</div>
+      <h3>Indoor Hospital Management System</h3>
+      <p>Comprehensive hospital database system with normalized relational schemas covering patients, doctors, wards, appointments, and billing. Strict integrity constraints ensure consistent record handling and efficient querying.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Oracle</span><span class="tag">SQL</span><span class="tag">DB Design</span></div>
+        <a href="https://github.com/TakbirZaman/Indoor-Hospital-Management" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">005</div>
+      <h3>Online Job Management Portal</h3>
+      <p>Java Swing desktop application for managing jobs, workers, and customer requests. Features an admin drag-and-drop interface, real-time progress tracking, job workflow validation, and smooth task handling.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">Desktop</span></div>
+        <a href="https://github.com/TakbirZaman/Online-Job-Management-Portal" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">006</div>
+      <h3>RailView — OpenGL Railway Simulation</h3>
+      <p>2D railway scene simulation built in C++ with OpenGL, featuring animated rendering, smooth day/night transition effects, and event-driven interactive controls for an immersive experience.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">Animation</span></div>
+        <a href="https://github.com/TakbirZaman" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Research -->
+<section id="research">
+  <div class="section-label" data-num="04">Research</div>
+  <h2>Research experience</h2>
+  <div class="research-list">
+
+    <div class="research-item reveal">
+      <div class="research-num">01</div>
+      <div>
+        <h3>Sentiment-Based Product Grouping</h3>
+        <p>Built an end-to-end NLP pipeline to group products based on sentiment signals extracted from text data. Leveraged TF-IDF vectorization and lemmatization for feature extraction, then applied DBSCAN clustering with PCA dimensionality reduction for interpretable, sentiment-driven product segmentation.</p>
+        <div class="research-tags">
+          <span class="tag-blue">NLP</span>
+          <span class="tag-blue">TF-IDF</span>
+          <span class="tag-blue">Lemmatization</span>
+          <span class="tag-blue">DBSCAN</span>
+          <span class="tag-blue">PCA</span>
+          <span class="tag-blue">Clustering</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-item reveal">
+      <div class="research-num">02</div>
+      <div>
+        <h3>Explainable Osteoporosis Detection System</h3>
+        <p>Developed a DenseNet121-based deep learning model for osteoporosis prediction from knee X-ray images, achieving an 87.5% recall score. Integrated SE (Squeeze-and-Excitation) Attention mechanisms and Grad-CAM visualizations to improve model interpretability and support clinical decision-making.</p>
+        <div class="research-tags">
+          <span class="tag-blue">DenseNet121</span>
+          <span class="tag-blue">SE Attention</span>
+          <span class="tag-blue">Grad-CAM</span>
+          <span class="tag-blue">Image Processing</span>
+          <span class="tag-blue">XAI</span>
+          <span class="tag-blue">87.5% Recall</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-item reveal">
+      <div class="research-num">03</div>
+      <div>
+        <h3>An Efficient Model for Waste Image Classification Using EfficientNet-B3</h3>
+        <p>Developed an EfficientNet-B3–based deep learning model for multi-class waste image classification, achieving 94% overall accuracy with 92% precision and 90% recall. The model demonstrated strong convergence and generalization while outperforming EfficientNetV2, YOLOv8n, and EfficientNet-B0 across nine waste categories.</p>
+        <div class="research-tags">
+          <span class="tag-blue">EfficientNet-B3</span>
+          <span class="tag-blue">Transfer Learning</span>
+          <span class="tag-blue">Image Classification</span>
+          <span class="tag-blue">Deep Learning</span>
+          <span class="tag-blue">94% Accuracy</span>
+          <span class="tag-blue">Comparative Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-item reveal">
+      <div class="research-num">04</div>
+      <div>
+        <h3>A Multi-Task Deep Learning Framework for Joint Brain Tumor Segmentation and Classification from MRI</h3>
+        <p>Developed a multi-task deep learning framework for brain tumor MRI analysis, achieving 95.6% overall accuracy in classifying glioma, meningioma, pituitary tumor, and healthy cases. The model showed strong performance across all classes with minor confusion between visually similar tumors, demonstrating its effectiveness for automated brain tumor diagnosis.</p>
+        <div class="research-tags">
+          <span class="tag-blue">Multi-Task Learning</span>
+          <span class="tag-blue">Brain MRI</span>
+          <span class="tag-blue">Tumor Segmentation</span>
+          <span class="tag-blue">Classification</span>
+          <span class="tag-blue">Deep Learning</span>
+          <span class="tag-blue">95.6% Accuracy</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="edu-glow"></div>
+  <div class="edu-container">
+    <div class="section-tag">Academic Background</div>
+    <h2 class="section-title">Educational <em>Qualifications</em></h2>
+
+    <div class="edu-timeline">
+
+      <!-- BSc -->
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-info">
+          <span class="edu-badge">Ongoing</span>
+          <h3>BSc. in Computer Science & Engineering</h3>
+          <p class="edu-institution">American International University Bangladesh</p>
+          <div class="edu-meta">
+            <span class="edu-year">📅 2022 – Present</span>
+            <span class="edu-gpa">⭐ CGPA: 3.75</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HSC -->
+      <div class="edu-card">
+        <div class="edu-icon">📘</div>
+        <div class="edu-info">
+          <span class="edu-badge completed">Completed</span>
+          <h3>Higher Secondary Certificate (HSC)</h3>
+          <p class="edu-institution">Chandpur Government College, Chandpur</p>
+          <div class="edu-meta">
+            <span class="edu-year">📅 2020</span>
+            <span class="edu-gpa">⭐ GPA: 5.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SSC -->
+      <div class="edu-card">
+        <div class="edu-icon">📗</div>
+        <div class="edu-info">
+          <span class="edu-badge completed">Completed</span>
+          <h3>Secondary School Certificate (SSC)</h3>
+          <p class="edu-institution">Hasan Ali Govt. High School, Chandpur</p>
+          <div class="edu-meta">
+            <span class="edu-year">📅 2018</span>
+            <span class="edu-gpa">⭐ GPA: 5.00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-label" data-num="05">Contact</div>
+  <h2>Let's connect</h2>
+  <div class="contact-wrapper">
+    <div class="contact-text reveal">
+    <p>
+  I'm currently seeking software development opportunities where I can apply my skills in full-stack development, 
+  .NET Core, and machine learning, while contributing to meaningful projects that support both personal growth and impactful outcomes.
+</p>
+<p>
+  Whether it's a job opportunity, collaboration, or a discussion about technology — I'm always open to connect and explore ways to grow my career.
+</p>
+      <a href="mailto:takbirzamanbhuiyan@gmail.com" class="btn-primary">Send a Message</a>
+    </div>
+    <div class="social-links reveal">
+      <a href="mailto:takbirzamanbhuiyan@gmail.com" class="social-link">
+        <span class="social-label">Email</span>
+        <span>takbirzamanbhuiyan@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/takbir-zaman-bhuiyan" target="_blank" class="social-link">
+        <span class="social-label">LinkedIn</span>
+        <span>in/takbir-zaman-bhuiyan</span>
+      </a>
+      <a href="https://github.com/TakbirZaman" target="_blank" class="social-link">
+        <span class="social-label">GitHub</span>
+        <span>github.com/TakbirZaman</span>
+      </a>
+      <a href="https://www.facebook.com/takbirzamanbhuiyan" target="_blank" class="social-link">
+        <span class="social-label">Facebook</span>
+        <span>takbirzamanbhuiyan</span>
+      </a>
+      <a href="tel:+8801631107100" class="social-link">
+        <span class="social-label">Phone</span>
+        <span>01631-107100</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Takbir Zaman Bhuiyan · Dhaka, Bangladesh</p>
+  <p>BSc Computer Science & Engineering · AIUB</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Parallax hero glow on mouse move
+  document.addEventListener('mousemove', (e) => {
+    const glow = document.querySelector('.hero-glow');
+    if (!glow) return;
+    const x = (e.clientX / window.innerWidth) * 40 - 20;
+    const y = (e.clientY / window.innerHeight) * 40 - 20;
+    glow.style.transform = `translate(${x}px, ${y}px)`;
+  });
+</script>
+</body>
+</html>
