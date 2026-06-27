@@ -303,14 +303,12 @@
 
   .about-text p strong { color: var(--text); font-weight: 400; }
 
-  /* ── About Right Column ── */
   .about-right {
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
 
-  /* ── Photo Collage ── */
   .photo-collage {
     position: relative;
     height: 240px;
@@ -338,42 +336,15 @@
     transition: filter 0.35s ease;
   }
 
-  .photo-collage .photo-slot:hover img {
-    filter: grayscale(0%);
-  }
+  .photo-collage .photo-slot:hover img { filter: grayscale(0%); }
 
-  /* Slot 1 — large, left */
-  .photo-collage .slot-1 {
-    left: 0;
-    top: 0;
-    width: 175px;
-    height: 220px;
-    z-index: 2;
-  }
-
-  /* Slot 2 — medium, center-right, overlapping */
-  .photo-collage .slot-2 {
-    left: 145px;
-    top: 20px;
-    width: 150px;
-    height: 190px;
-    z-index: 3;
-  }
-
-  /* Slot 3 — small, far right, offset down */
-  .photo-collage .slot-3 {
-    right: 0;
-    top: 50px;
-    width: 120px;
-    height: 160px;
-    z-index: 1;
-  }
+  .photo-collage .slot-1 { left: 0; top: 0; width: 175px; height: 220px; z-index: 2; }
+  .photo-collage .slot-2 { left: 145px; top: 20px; width: 150px; height: 190px; z-index: 3; }
+  .photo-collage .slot-3 { right: 0; top: 50px; width: 120px; height: 160px; z-index: 1; }
 
   .photo-label {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     padding: 0.35rem 0.5rem;
     background: rgba(11,12,14,0.75);
     backdrop-filter: blur(6px);
@@ -389,7 +360,6 @@
 
   .photo-slot:hover .photo-label { opacity: 1; }
 
-  /* ── Info Table ── */
   .info-table { }
   .info-row {
     display: flex;
@@ -408,11 +378,7 @@
     flex-shrink: 0;
   }
 
-  .info-val {
-    font-size: 0.88rem;
-    color: var(--text);
-  }
-
+  .info-val { font-size: 0.88rem; color: var(--text); }
   .info-val a { color: var(--accent); text-decoration: none; }
   .info-val a:hover { text-decoration: underline; }
 
@@ -432,10 +398,7 @@
     transition: border-color 0.25s, transform 0.25s;
   }
 
-  .skill-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
   .skill-card::before {
     content: '';
@@ -461,11 +424,7 @@
     margin-bottom: 0.8rem;
   }
 
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
   .tag {
     font-family: 'JetBrains Mono', monospace;
@@ -612,21 +571,14 @@
 
   .edu-glow {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
 
-  .edu-container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
+  .edu-container { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
 
   .section-tag {
     font-family: 'JetBrains Mono', monospace;
@@ -646,10 +598,7 @@
     line-height: 1.1;
   }
 
-  .section-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .section-title em { font-style: italic; color: var(--accent); }
 
   .edu-timeline {
     display: flex;
@@ -661,9 +610,7 @@
   .edu-timeline::before {
     content: '';
     position: absolute;
-    left: 30px;
-    top: 0;
-    bottom: 0;
+    left: 30px; top: 0; bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, rgba(200,169,110,0.6), transparent);
   }
@@ -674,23 +621,13 @@
     gap: 1.5rem;
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 0;
     padding: 1.75rem;
     transition: transform 0.3s ease, border-color 0.3s ease;
   }
 
-  .edu-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(200,169,110,0.4);
-  }
+  .edu-card:hover { transform: translateY(-4px); border-color: rgba(200,169,110,0.4); }
 
-  .edu-icon {
-    font-size: 2rem;
-    min-width: 48px;
-    text-align: center;
-    margin-top: 4px;
-  }
-
+  .edu-icon { font-size: 2rem; min-width: 48px; text-align: center; margin-top: 4px; }
   .edu-info { flex: 1; }
 
   .edu-badge {
@@ -721,17 +658,9 @@
     margin-bottom: 0.3rem;
   }
 
-  .edu-institution {
-    font-size: 0.88rem;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
+  .edu-institution { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.75rem; }
 
-  .edu-meta {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
+  .edu-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
   .edu-year, .edu-gpa {
     font-family: 'JetBrains Mono', monospace;
@@ -772,10 +701,7 @@
     background: var(--card);
   }
 
-  .social-link:hover {
-    border-color: var(--accent);
-    padding-left: 1.8rem;
-  }
+  .social-link:hover { border-color: var(--accent); padding-left: 1.8rem; }
 
   .social-link span {
     font-family: 'JetBrains Mono', monospace;
@@ -825,10 +751,7 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── Scrollbar ── */
   ::-webkit-scrollbar { width: 4px; }
@@ -936,8 +859,6 @@
     </div>
 
     <div class="about-right reveal">
-
-      <!-- Photo Collage: takbir1.jpg + takbir2.jpg + takbir.jpg -->
       <div class="photo-collage">
         <div class="photo-slot slot-1">
           <img src="takbir1.jpg" alt="Takbir Zaman Bhuiyan" />
@@ -953,7 +874,6 @@
         </div>
       </div>
 
-      <!-- Info Table -->
       <div class="info-table">
         <div class="info-row">
           <span class="info-key">Education</span>
@@ -984,7 +904,6 @@
           <span class="info-val"><a href="https://www.linkedin.com/in/takbir-zaman-bhuiyan" target="_blank">in/takbir-zaman-bhuiyan</a></span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1025,14 +944,16 @@
       <div class="skill-tags">
         <span class="tag">ASP.NET Core</span>
         <span class="tag">.NET Core MVC</span>
+        <span class="tag">Express.js</span>
         <span class="tag">RESTful API</span>
-        <span class="tag">Vite</span>
+        <span class="tag">JWT Auth</span>
       </div>
     </div>
     <div class="skill-card reveal">
       <div class="skill-icon">// Data</div>
       <h3>Databases</h3>
       <div class="skill-tags">
+        <span class="tag">PostgreSQL</span>
         <span class="tag">MySQL</span>
         <span class="tag">Oracle</span>
         <span class="tag">SQL</span>
@@ -1040,23 +961,26 @@
     </div>
     <div class="skill-card reveal">
       <div class="skill-icon">// Intelligence</div>
-      <h3>ML & Data Science</h3>
+      <h3>ML & AI</h3>
       <div class="skill-tags">
-        <span class="tag">Image Processing</span>
-        <span class="tag">Data Preprocessing</span>
-        <span class="tag">Predictive Modeling</span>
-        <span class="tag">Model Optimization</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Gemini AI</span>
+        <span class="tag">RAG</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">NLP</span>
       </div>
     </div>
     <div class="skill-card reveal">
-      <div class="skill-icon">// Tooling</div>
-      <h3>Tools & DevOps</h3>
+      <div class="skill-icon">// Automation</div>
+      <h3>Tools & Automation</h3>
       <div class="skill-tags">
+        <span class="tag">n8n</span>
         <span class="tag">Git</span>
-        <span class="tag">GitHub</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Postman</span>
         <span class="tag">Netlify</span>
-        <span class="tag">OpenGL</span>
-        <span class="tag">3-Layer Architecture</span>
       </div>
     </div>
   </div>
@@ -1070,8 +994,54 @@
   <h2>Selected work</h2>
   <div class="projects-grid">
 
+    <!-- 001 -->
     <div class="project-card reveal">
       <div class="project-num">001</div>
+      <h3>Task Manager</h3>
+      <p>Full-stack task management app with JWT auth, per-user data isolation, CRUD, filtering, sorting, CSV export, and live task statistics. React SPA + Express REST API + PostgreSQL — raw parameterized SQL, no ORM. Deployed on Vercel.</p>
+      <div class="project-footer">
+        <div class="skill-tags">
+          <span class="tag">React 19</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">JWT</span><span class="tag">Docker</span>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <a href="https://task-manager-takbirzamans-projects.vercel.app/" target="_blank" class="project-link">Live →</a>
+          <a href="https://github.com/TakbirZaman/Task-Manager" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 002 -->
+    <div class="project-card reveal">
+      <div class="project-num">002</div>
+      <h3>Construction Tracker</h3>
+      <p>Construction project management system for planning, task assignment, budget monitoring, material management, and team collaboration. Features role-based access control and real-time updates across all project modules.</p>
+      <div class="project-footer">
+        <div class="skill-tags">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <a href="https://construction-tracker-7cy9.onrender.com/" target="_blank" class="project-link">Live →</a>
+          <a href="https://github.com/TakbirZaman/Construction-Tracker" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 003 -->
+    <div class="project-card reveal">
+      <div class="project-num">003</div>
+      <h3>AI Email Auto-Responder</h3>
+      <p>Fully automated email workflow built with n8n — detects incoming Gmail messages, passes content to an AI model via OpenRouter, and sends professional contextual replies within 60 seconds. Zero human intervention required.</p>
+      <div class="project-footer">
+        <div class="skill-tags">
+          <span class="tag">n8n</span><span class="tag">Gmail API</span><span class="tag">OpenRouter AI</span><span class="tag">JavaScript</span>
+        </div>
+        <a href="https://github.com/TakbirZaman/Email-auto-responder" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- 004 -->
+    <div class="project-card reveal">
+      <div class="project-num">004</div>
       <h3>Student Attendance Management API</h3>
       <p>RESTful attendance system built with ASP.NET Core Web API and EF Core using clean 3-layer architecture. Features secure CRUD operations, attendance marking, and student-class mapping with reliable database persistence.</p>
       <div class="project-footer">
@@ -1080,60 +1050,25 @@
       </div>
     </div>
 
+    <!-- 005 -->
     <div class="project-card reveal">
-      <div class="project-num">002</div>
+      <div class="project-num">005</div>
       <h3>ConnectHub — Social Platform</h3>
       <p>MVC-driven social media platform featuring role-based access control (RBAC), user interactions, post management, and a marketplace module. MySQL-backed with structured authentication and authorization flows.</p>
       <div class="project-footer">
         <div class="skill-tags"><span class="tag">PHP</span><span class="tag">HTML/CSS</span><span class="tag">MySQL</span><span class="tag">MVC</span></div>
-        <a href="https://github.com/TakbirZaman/ConnectHub" target="_blank" class="project-link">GitHub →</a>
+        <div style="display:flex; gap:12px;">
+          <a href="https://takbir.gt.tc/ConnectHub/index.php?page=login&i=1" target="_blank" class="project-link">Live →</a>
+          <a href="https://github.com/TakbirZaman/ConnectHub" target="_blank" class="project-link">GitHub →</a>
+        </div>
       </div>
     </div>
 
-    <div class="project-card reveal">
-      <div class="project-num">003</div>
-      <h3>Loan Approval Data Preprocessing</h3>
-      <p>Automated preprocessing pipeline in R for loan approval datasets, handling missing values, applying IQR-based outlier removal, and improving class balance to produce clean, model-ready features.</p>
-      <div class="project-footer">
-        <div class="skill-tags"><span class="tag">R</span><span class="tag">IQR</span><span class="tag">Data Cleaning</span></div>
-        <a href="https://github.com/TakbirZaman/Loan-Approval-Analysis-Data-Cleaning-in-R-language" target="_blank" class="project-link">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-num">004</div>
-      <h3>Indoor Hospital Management System</h3>
-      <p>Comprehensive hospital database system with normalized relational schemas covering patients, doctors, wards, appointments, and billing. Strict integrity constraints ensure consistent record handling and efficient querying.</p>
-      <div class="project-footer">
-        <div class="skill-tags"><span class="tag">Oracle</span><span class="tag">SQL</span><span class="tag">DB Design</span></div>
-        <a href="https://github.com/TakbirZaman/Indoor-Hospital-Management" target="_blank" class="project-link">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-num">005</div>
-      <h3>Online Job Management Portal</h3>
-      <p>Java Swing desktop application for managing jobs, workers, and customer requests. Features an admin drag-and-drop interface, real-time progress tracking, job workflow validation, and smooth task handling.</p>
-      <div class="project-footer">
-        <div class="skill-tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">Desktop</span></div>
-        <a href="https://github.com/TakbirZaman/Online-Job-Management-Portal" target="_blank" class="project-link">GitHub →</a>
-      </div>
-    </div>
-
+    <!-- 006 -->
     <div class="project-card reveal">
       <div class="project-num">006</div>
-      <h3>RailView — OpenGL Railway Simulation</h3>
-      <p>2D railway scene simulation built in C++ with OpenGL, featuring animated rendering, smooth day/night transition effects, and event-driven interactive controls for an immersive experience.</p>
-      <div class="project-footer">
-        <div class="skill-tags"><span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">Animation</span></div>
-        <a href="https://github.com/TakbirZaman" target="_blank" class="project-link">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-num">007</div>
       <h3>beatMEE — Browser Fighting Game</h3>
-      <p>Fast-paced 2D fighting game built with React and HTML5 Canvas — no game engine. Features 4 CPU difficulty levels with adaptive Legendary AI, combo system, super meter, rage mode, cinematic KO effects, live crowd arena, and full mobile touch controls.</p>
+      <p>Fast-paced 2D fighting game built with React and HTML5 Canvas — no game engine. Features 4 CPU difficulty levels with adaptive Legendary AI, combo system, super meter, rage mode, cinematic KO effects, and full mobile touch controls.</p>
       <div class="project-footer">
         <div class="skill-tags"><span class="tag">React</span><span class="tag">Canvas API</span><span class="tag">Vite</span><span class="tag">Game Dev</span></div>
         <div style="display:flex; gap:12px;">
@@ -1143,10 +1078,11 @@
       </div>
     </div>
 
+    <!-- 007 -->
     <div class="project-card reveal">
-      <div class="project-num">008</div>
+      <div class="project-num">007</div>
       <h3>RidePrice BD — Dhaka Fare Estimator</h3>
-      <p>Instant ride fare estimator for Dhaka covering Rickshaw, Bike, Car, CNG, and Bus across 76 locations. ML model trained on real Dhaka market rates with a full price breakdown — distance, weather, rush hour, and demand — all calculated client-side with no server delay.</p>
+      <p>Instant ride fare estimator for Dhaka covering Rickshaw, Bike, Car, CNG, and Bus across 76 locations. ML model trained on real Dhaka market rates with full price breakdown — distance, weather, rush hour, and demand — all client-side, no server delay.</p>
       <div class="project-footer">
         <div class="skill-tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">JavaScript</span><span class="tag">Netlify</span></div>
         <div style="display:flex; gap:12px;">
@@ -1156,12 +1092,71 @@
       </div>
     </div>
 
+    <!-- 008 -->
+    <div class="project-card reveal">
+      <div class="project-num">008</div>
+      <h3>RAG Chatbot — Document Q&A</h3>
+      <p>Retrieval-Augmented Generation chatbot that answers questions from uploaded PDFs. Implements TF-IDF cosine similarity search in pure Python for chunk retrieval, powered by Gemini LLM for accurate, context-grounded answers.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Gemini AI</span><span class="tag">RAG</span></div>
+        <div style="display:flex; gap:12px;">
+          <a href="https://takbirzaman-rag-chatbot.streamlit.app" target="_blank" class="project-link">Live →</a>
+          <a href="https://github.com/TakbirZaman/rag-chatbot" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 009 -->
     <div class="project-card reveal">
       <div class="project-num">009</div>
       <h3>Face Recognition System</h3>
-      <p>End-to-end face recognition pipeline using YuNet for detection and SFace for identification with 128-dim embeddings and cosine similarity matching. Includes a custom JavaScript-Python bridge for real-time capture and automated Google Drive synchronization.</p>
+      <p>End-to-end face recognition pipeline using YuNet for detection and SFace for identification with 128-dim embeddings and cosine similarity matching. Includes a custom JavaScript-Python bridge for real-time capture and automated Google Drive sync.</p>
       <div class="project-footer">
         <div class="skill-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">YuNet</span><span class="tag">SFace</span></div>
+        <a href="https://github.com/TakbirZaman" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- 010 -->
+    <div class="project-card reveal">
+      <div class="project-num">010</div>
+      <h3>Loan Approval Data Preprocessing</h3>
+      <p>Automated preprocessing pipeline in R for loan approval datasets, handling missing values, applying IQR-based outlier removal, and improving class balance to produce clean, model-ready features.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">R</span><span class="tag">IQR</span><span class="tag">Data Cleaning</span></div>
+        <a href="https://github.com/TakbirZaman/Loan-Approval-Analysis-Data-Cleaning-in-R-language" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- 011 -->
+    <div class="project-card reveal">
+      <div class="project-num">011</div>
+      <h3>Indoor Hospital Management System</h3>
+      <p>Comprehensive hospital database system with normalized relational schemas covering patients, doctors, wards, appointments, and billing. Strict integrity constraints ensure consistent record handling and efficient querying.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Oracle</span><span class="tag">SQL</span><span class="tag">DB Design</span></div>
+        <a href="https://github.com/TakbirZaman/Indoor-Hospital-Management" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- 012 -->
+    <div class="project-card reveal">
+      <div class="project-num">012</div>
+      <h3>Online Job Management Portal</h3>
+      <p>Java Swing desktop application for managing jobs, workers, and customer requests. Features an admin drag-and-drop interface, real-time progress tracking, job workflow validation, and smooth task handling.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">Desktop</span></div>
+        <a href="https://github.com/TakbirZaman/Online-Job-Management-Portal" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- 013 -->
+    <div class="project-card reveal">
+      <div class="project-num">013</div>
+      <h3>RailView — OpenGL Railway Simulation</h3>
+      <p>2D railway scene simulation built in C++ with OpenGL, featuring animated rendering, smooth day/night transition effects, and event-driven interactive controls for an immersive experience.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">Animation</span></div>
         <a href="https://github.com/TakbirZaman" target="_blank" class="project-link">GitHub →</a>
       </div>
     </div>
